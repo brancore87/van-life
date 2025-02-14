@@ -4,3 +4,7 @@
 @theme {
   --font-inter: "Inter", serif;
 }
+
+.paragraph {
+  @apply text-justify text-[#000000] my-10 font-[500] text-[16px];
+}
