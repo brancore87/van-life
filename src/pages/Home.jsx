@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function App() {
+export default function App(props) {
   return (
     <main className="flex relative bg-center flex-col items-center min-h-screen bg-[url(./vanlife.png)] bg-repeat-round px-10">
       <h1 className="text-[36px] text-[#FFFFFF] mt-75 font-inter font-extrabold leading-[42px]">

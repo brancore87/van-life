@@ -3,7 +3,11 @@ import React from "react";
 export default function About() {
   return (
     <main>
-      <div className="bg-[url(./vanlife2.png)] mt-20 w-full bg-cover bg-center h-75 bg-no-repeat" />
+      <img
+        src="/public/vanlife2.png"
+        alt=""
+        className="w-full object-cover h-75"
+      />
       <article className="px-5 font-inter">
         <h1 className="text-[36px] text-[#000000] mt-10 font-bold leading-[42px]">
           Don’t squeeze in a sedan when you could relax in a van.

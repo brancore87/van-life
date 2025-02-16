@@ -1,8 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
+body {
+  font-family: var(--font-inter);
+}
+
 @theme {
   --font-inter: "Inter", serif;
+  --color-filter: #ffead0;
+  --color-simple: #e17654;
+  --color-rugged: #ffead0;
+  --color-luxury: #161616;
+  --radius-filter: 5px;
+  --spacing-filter-width: 104px;
+  --spacing-filter-height: 37px;
 }
 
 .paragraph {
