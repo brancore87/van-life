@@ -3,10 +3,12 @@
 
 body {
   font-family: var(--font-inter);
+  background-color: var(--color-background);
 }
 
 @theme {
   --font-inter: "Inter", serif;
+  --color-background: #fff7ed;
   --color-filter: #ffead0;
   --color-simple: #e17654;
   --color-rugged: #ffead0;
@@ -17,5 +19,5 @@ body {
 }
 
 .paragraph {
-  @apply text-justify text-[#000000] my-10 font-[500] text-[16px];
+  @apply my-10 text-justify text-[16px] font-[500] text-[#000000];
 }
