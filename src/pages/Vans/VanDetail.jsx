@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
-import buttonClasses from "../utils";
+import buttonClasses from "../../utils";
 
 export default function VanDetail() {
   const [van, setVan] = useState(null);

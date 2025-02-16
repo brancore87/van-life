@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
-import buttonClasses from "../utils";
+import buttonClasses from "../../utils";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
