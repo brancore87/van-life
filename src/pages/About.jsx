@@ -3,13 +3,9 @@ import React from "react";
 export default function About() {
   return (
     <main>
-      <img
-        src="/public/vanlife2.png"
-        alt=""
-        className="w-full object-cover h-75"
-      />
-      <article className="px-5 font-inter">
-        <h1 className="text-[36px] text-[#000000] mt-10 font-bold leading-[42px]">
+      <img src="vanlife2.png" alt="" className="h-75 w-full object-cover" />
+      <article className="font-inter px-5">
+        <h1 className="mt-10 text-[36px] leading-[42px] font-bold text-[#000000]">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>
         <p className="paragraph">
@@ -22,11 +18,11 @@ export default function About() {
           of touring the world on 4 wheels.
         </p>
       </article>
-      <section className="bg-[#FFCC8D] relative flex items-center justify-center flex-col p-10 m-10 rounded-md">
-        <h3 className="font-bold text-2xl mb-10 text-[#161616]">
+      <section className="relative m-10 flex flex-col items-center justify-center rounded-md bg-[#FFCC8D] p-10">
+        <h3 className="mb-10 text-2xl font-bold text-[#161616]">
           Your destination is waiting. Your van is ready.
         </h3>
-        <button className="bg-[#161616] px-5 bottom-5 absolute  left-10 font-inter font-bold py-3 rounded-md text-white ">
+        <button className="font-inter absolute bottom-5 left-10 rounded-md bg-[#161616] px-5 py-3 font-bold text-white">
           Explore our vans
         </button>
       </section>
