@@ -95,9 +95,10 @@ export default function HostVansDetailHeader() {
                   </NavLink>
                 ))}
               </div>
-
-              <Outlet />
             </>
+            <div className="size-[252px] w-full">
+              <Outlet />
+            </div>
           </motion.section>
         </main>
       ) : (
