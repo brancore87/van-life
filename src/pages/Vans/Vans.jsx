@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import buttonClasses from "../../utils";
+import Loading from "../../components/Loading";
+import { motion } from "motion/react";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
@@ -14,7 +16,10 @@ export default function Vans() {
   const vansElement = vans.map((van) => (
     <ul key={van.id} className="my-5">
       <Link to={`/vans/${van.id}`}>
-        <img
+        <motion.img
+          initial={{ opacity: 0, scale: 0.5 }} // Start small and hidden
+          animate={{ opacity: 1, scale: 1 }} // Fade in and scale up
+          transition={{ duration: 0.8, ease: "easeOut" }}
           src={van.imageUrl}
           alt={van.name}
           className="size-[350px] rounded-[5px] shadow-[0_0_2px] sm:size-[400px]"
@@ -35,24 +40,30 @@ export default function Vans() {
   ));
 
   return (
-    <main className="flex min-h-screen flex-col items-center text-black">
-      <h1 className="w-full px-10 text-[32px] font-bold">
-        Explore our van options
-      </h1>
-      <section className="mt-5 mb-10 flex gap-1">
-        <button className="bg-filter rounded-filter w-filter-width h-filter-height">
-          Simple
-        </button>
-        <button className="bg-filter rounded-filter w-filter-width h-filter-height">
-          Luxury
-        </button>
-        <button className="bg-filter rounded-filter w-filter-width h-filter-height">
-          Rugged
-        </button>
-      </section>
-      <section className="top-15 left-10 mx-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {vansElement}
-      </section>
-    </main>
+    <>
+      {vans.length > 0 ? (
+        <main className="flex min-h-screen flex-col items-center text-black">
+          <h1 className="w-full px-10 text-[32px] font-bold">
+            Explore our van options
+          </h1>
+          <section className="mt-5 mb-10 flex gap-1">
+            <button className="bg-filter rounded-filter w-filter-width h-filter-height">
+              Simple
+            </button>
+            <button className="bg-filter rounded-filter w-filter-width h-filter-height">
+              Luxury
+            </button>
+            <button className="bg-filter rounded-filter w-filter-width h-filter-height">
+              Rugged
+            </button>
+          </section>
+          <section className="top-15 left-10 mx-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {vansElement}
+          </section>
+        </main>
+      ) : (
+        <Loading />
+      )}
+    </>
   );
 }

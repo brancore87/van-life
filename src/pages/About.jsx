@@ -1,8 +1,12 @@
-import React from "react";
+import { motion } from "motion/react";
 
 export default function About() {
   return (
-    <main>
+    <motion.main
+      initial={{ opacity: 0, x: -50 }} // Start position (hidden and slightly below)
+      animate={{ opacity: 1, y: 0, x: 0 }} // End position (fully visible and normal position)
+      transition={{ duration: 0.8, ease: "anticipate" }}
+    >
       <img src="vanlife2.png" alt="" className="h-75 w-full object-cover" />
       <article className="font-inter px-5">
         <h1 className="mt-10 text-[36px] leading-[42px] font-bold text-[#000000]">
@@ -26,6 +30,6 @@ export default function About() {
           Explore our vans
         </button>
       </section>
-    </main>
+    </motion.main>
   );
 }

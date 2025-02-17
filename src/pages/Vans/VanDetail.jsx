@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import buttonClasses from "../../utils";
+import Loading from "../../components/Loading";
+import { motion } from "motion/react";
 
 export default function VanDetail() {
   const [van, setVan] = useState(null);
@@ -19,7 +21,11 @@ export default function VanDetail() {
           <Link to="/vans" className="ml-10 w-full">
             ⬅ Back to all vans
           </Link>
-          <img
+
+          <motion.img
+            initial={{ opacity: 0, scale: 0.5 }} // Start small and hidden
+            animate={{ opacity: 1, scale: 1 }} // Fade in and scale up
+            transition={{ duration: 0.8, ease: "easeOut" }}
             src={van.imageUrl}
             alt={van.name}
             className="my-10 rounded-xl shadow-[0_0_3px] sm:size-[600px] md:size-[700px] lg:size-[800px]"
@@ -42,7 +48,7 @@ export default function VanDetail() {
           </div>
         </>
       ) : (
-        <h2>Loading</h2>
+        <Loading />
       )}
     </main>
   );

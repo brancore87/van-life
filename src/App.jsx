@@ -33,7 +33,6 @@ export default function App() {
           </Route>
         </Route>
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }
