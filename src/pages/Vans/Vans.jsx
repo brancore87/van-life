@@ -19,7 +19,7 @@ export default function Vans() {
         <motion.img
           initial={{ opacity: 0, scale: 0.5 }} // Start small and hidden
           animate={{ opacity: 1, scale: 1 }} // Fade in and scale up
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: "anticipate" }}
           src={van.imageUrl}
           alt={van.name}
           className="size-[350px] rounded-[5px] shadow-[0_0_2px] sm:size-[400px]"

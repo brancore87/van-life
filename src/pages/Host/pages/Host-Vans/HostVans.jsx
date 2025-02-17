@@ -23,7 +23,7 @@ export default function HostVans() {
             <motion.section
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeIn" }}
+              transition={{ duration: 0.8, ease: "easeIn" }}
               className="my-3 h-[105px] w-full rounded-[5px] bg-white px-3"
             >
               <NavLink
@@ -36,13 +36,13 @@ export default function HostVans() {
                   className="size-[65px] rounded-[5px] p-0.5 shadow-[0_0_2px]"
                   initial={{ opacity: 0, y: 0, x: -100 }}
                   animate={{ opacity: 1, y: 0, x: 0 }}
-                  transition={{ duration: 2.8, ease: "backIn" }}
+                  transition={{ duration: 0.9, ease: "backIn" }}
                 />
                 <div className="mx-5">
                   <motion.h2
                     initial={{ opacity: 0, y: -100, x: 0 }}
                     animate={{ opacity: 1, y: 0, x: 0 }}
-                    transition={{ duration: 1.8, ease: "anticipate" }}
+                    transition={{ duration: 1, ease: "anticipate" }}
                     className="text-xl font-semibold"
                   >
                     {vans.name}
@@ -50,7 +50,7 @@ export default function HostVans() {
                   <motion.h1
                     initial={{ opacity: 0, y: 100, x: 0 }}
                     animate={{ opacity: 1, y: 0, x: 0 }}
-                    transition={{ duration: 2, ease: "circIn" }}
+                    transition={{ duration: 0.8, ease: "circIn" }}
                     className="text-[#4D4D4D]"
                   >
                     ${vans.price}/day

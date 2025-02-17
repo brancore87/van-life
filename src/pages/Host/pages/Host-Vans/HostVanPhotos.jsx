@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import React from "react";
+import { useOutletContext } from "react-router";
 import { motion } from "motion/react";
 
 export default function HostVansPricing() {
-  const [hostVan, setHostVan] = useState(null);
-  const { hostId } = useParams();
-
-  useEffect(() => {
-    fetch(`/api/host/vans/${hostId}`)
-      .then((res) => res.json())
-      .then((data) => setHostVan(data.vans));
-  }, [hostId]);
+  const [hostVan] = useOutletContext();
 
   return (
     <>

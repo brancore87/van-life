@@ -86,6 +86,7 @@ export default function HostVansDetailHeader() {
                 </NavLink>
                 {navLinks.map((link) => (
                   <NavLink
+                    key={link.path}
                     to={link.path}
                     className={({ isActive }) =>
                       `text-[#4D4D4D] transition-all hover:font-black hover:underline ${isActive ? "font-bold underline" : ""}`
@@ -96,8 +97,8 @@ export default function HostVansDetailHeader() {
                 ))}
               </div>
             </>
-            <div className="size-[252px] w-full">
-              <Outlet />
+            <div className="size-[300px] w-full">
+              <Outlet context={[hostVan]} />
             </div>
           </motion.section>
         </main>
