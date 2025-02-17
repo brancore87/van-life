@@ -18,7 +18,7 @@ export default function VanDetail() {
     <main className="flex min-h-screen flex-col items-center px-3">
       {van ? (
         <>
-          <Link to="/vans" className="ml-10 w-full">
+          <Link to=".." relative="path" className="ml-10 w-full">
             ⬅ Back to all vans
           </Link>
 

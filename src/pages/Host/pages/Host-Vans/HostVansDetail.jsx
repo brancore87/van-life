@@ -36,7 +36,7 @@ export default function HostVansDetail() {
       {hostVan ? (
         <main className="mt-10 flex min-h-screen w-full flex-col">
           <span className="pb-10 text-[15px] font-medium">
-            <Link to="/host/vans" className="hover:underline">
+            <Link to=".." relative="path" className="hover:underline">
               ⬅ Back to all vans
             </Link>
           </span>

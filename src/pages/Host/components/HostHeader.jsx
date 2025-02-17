@@ -20,7 +20,7 @@ export default function HostHeader() {
   return (
     <nav className="font-inter flex w-full items-center justify-baseline gap-10 font-semibold text-[#4D4D4D]">
       <NavLink
-        to="/host"
+        to="."
         end
         className={({ isActive }) =>
           `transition-all hover:text-black ${isActive ? "font-black underline" : ""}`
