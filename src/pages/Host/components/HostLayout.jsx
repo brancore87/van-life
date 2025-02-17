@@ -3,7 +3,7 @@ import HostHeader from "./HostHeader";
 
 export default function HostLayout() {
   return (
-    <main className="flex w-full flex-col items-center justify-between">
+    <main className="px-5">
       <HostHeader />
       <Outlet />
     </main>

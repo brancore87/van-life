@@ -9,7 +9,8 @@ import About from "./pages/About";
 import HostLayout from "./pages/Host/components/HostLayout";
 import Dashboard from "./pages/Host/pages/Dashboard";
 import Income from "./pages/Host/pages/Income";
-import HostVans from "./pages/Host/pages/HostVans";
+import HostVans from "./pages/Host/pages/Host-Vans/HostVans";
+import HostVansDetail from "./pages/Host/pages/Host-Vans/HostVansDetail";
 import Reviews from "./pages/Host/pages/Reviews";
 
 import "./server";
@@ -26,7 +27,8 @@ export default function App() {
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
-            <Route path="host-vans" element={<HostVans />} />
+            <Route path="vans" element={<HostVans />} />
+            <Route path="vans/:hostId" element={<HostVansDetail />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>

@@ -8,7 +8,7 @@ export default function HostHeader() {
       name: "Income",
     },
     {
-      path: "host-vans",
+      path: "vans",
       name: "Vans",
     },
     {
@@ -18,7 +18,7 @@ export default function HostHeader() {
   ];
 
   return (
-    <nav className="font-inter flex items-center gap-10 font-semibold text-[#4D4D4D]">
+    <nav className="font-inter flex w-full items-center justify-baseline gap-10 font-semibold text-[#4D4D4D]">
       <NavLink
         to="/host"
         end
