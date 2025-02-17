@@ -6,7 +6,7 @@ export default function App() {
       initial={{ opacity: 0, y: -50 }} // Start position (hidden and slightly above)
       animate={{ opacity: 1, y: 0 }} // End position (fully visible and normal position)
       transition={{ duration: 0.8, ease: "easeInOut" }} // Smooth transition
-      className="relative flex min-h-screen flex-col items-center bg-[url('/vanlife.png')] bg-cover bg-center px-10"
+      className="relative flex min-h-screen flex-col items-center bg-[url('/vanlife.png')] bg-cover bg-center bg-no-repeat px-10"
     >
       <h1 className="font-inter mt-[75px] text-[36px] leading-[42px] font-extrabold text-white">
         You got the travel plans, we got the travel vans.
