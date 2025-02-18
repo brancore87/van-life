@@ -16,6 +16,7 @@ import HostVansPhotos from "./pages/Host/pages/Host-Vans/HostVanPhotos";
 import HostVansDetailHeader from "./pages/Host/components/HostVansDetailHeader";
 import "./server";
 import Tekken from "./pages/Tekken";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
             </Route>
           </Route>
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

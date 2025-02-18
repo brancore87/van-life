@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  Link,
-  NavLink,
-  useLocation,
-  useResolvedPath,
-  useSearchParams,
-} from "react-router";
+import { Link, useSearchParams } from "react-router";
 import buttonClasses from "../../utils";
 import Loading from "../../components/Loading";
 import { motion } from "motion/react";
+import getVans from "../../api";
 
 const vanType = [
   {
@@ -31,9 +26,12 @@ export default function Vans() {
   const typeFilter = searchParams.get("type");
 
   useEffect(() => {
-    fetch("/api/vans/")
-      .then((res) => res.json())
-      .then((data) => setVans(data.vans));
+    async function loadVans() {
+      const data = await getVans();
+      setVans(data);
+    }
+
+    loadVans();
   }, []);
 
   const displayedVans = typeFilter
