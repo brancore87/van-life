@@ -7,6 +7,7 @@ import {
 } from "react-router";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
+import Error from "./components/Error";
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import VanDetail from "./pages/Vans/VanDetail";
 import About from "./pages/About";
@@ -29,7 +30,12 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="tekken" element={<Tekken />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} loader={vansLoader} />
+      <Route
+        path="vans"
+        element={<Vans />}
+        loader={vansLoader}
+        errorElement={<Error />}
+      />
       <Route path="vans/:id" element={<VanDetail />} />
 
       <Route path="host" element={<HostLayout />}>
