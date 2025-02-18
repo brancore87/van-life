@@ -24,11 +24,14 @@ export default function Vans() {
   const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function loadVans() {
+      setIsLoading(true);
       const data = await getVans();
       setVans(data);
+      setIsLoading(false);
     }
 
     loadVans();
@@ -66,6 +69,10 @@ export default function Vans() {
       </Link>
     </ul>
   ));
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
