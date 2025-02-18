@@ -12,6 +12,8 @@ export default function VanDetail() {
 
   const search = location.state?.search || "";
 
+  const typeName = location.state?.type || "all";
+
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
       .then((res) => res.json())
@@ -24,7 +26,7 @@ export default function VanDetail() {
         <>
           <div className="flex w-full">
             <Link to={`..${search}`} relative="path" className="px-8">
-              ⬅ Back to all vans
+              ⬅ Back to {typeName} vans
             </Link>
           </div>
           <motion.img

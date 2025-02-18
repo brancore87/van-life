@@ -42,7 +42,10 @@ export default function Vans() {
 
   const vansElement = displayedVans.map((van) => (
     <ul key={van.id} className="my-5">
-      <Link to={van.id} state={{ search: `?${searchParams.toString()}` }}>
+      <Link
+        to={van.id}
+        state={{ search: `?${searchParams.toString()}`, type: typeFilter }}
+      >
         <motion.img
           initial={{ opacity: 0, scale: 0.5 }} // Start small and hidden
           animate={{ opacity: 1, scale: 1 }} // Fade in and scale up
