@@ -1,5 +1,12 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  RouterProvider,
+  createRoutesFromElements,
+  createBrowserRouter,
+} from "react-router";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import Vans from "./pages/Vans/Vans";
@@ -18,31 +25,31 @@ import "./server";
 import Tekken from "./pages/Tekken";
 import NotFound from "./pages/NotFound";
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="tekken" element={<Tekken />} />
-          <Route path="about" element={<About />} />
-          <Route path="vans" element={<Vans />} />
-          <Route path="vans/:id" element={<VanDetail />} />
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="tekken" element={<Tekken />} />
+      <Route path="about" element={<About />} />
+      <Route path="vans" element={<Vans />} />
+      <Route path="vans/:id" element={<VanDetail />} />
 
-          <Route path="host" element={<HostLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="income" element={<Income />} />
-            <Route path="reviews" element={<Reviews />} />
-            <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:hostId" element={<HostVansDetailHeader />}>
-              <Route index element={<HostVansDetail />} />
-              <Route path="pricing" element={<HostVansPricing />} />
-              <Route path="photos" element={<HostVansPhotos />} />
-            </Route>
-          </Route>
+      <Route path="host" element={<HostLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="income" element={<Income />} />
+        <Route path="reviews" element={<Reviews />} />
+        <Route path="vans" element={<HostVans />} />
+        <Route path="vans/:hostId" element={<HostVansDetailHeader />}>
+          <Route index element={<HostVansDetail />} />
+          <Route path="pricing" element={<HostVansPricing />} />
+          <Route path="photos" element={<HostVansPhotos />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  );
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Route>,
+  ),
+);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }

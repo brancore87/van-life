@@ -25,13 +25,19 @@ export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function loadVans() {
       setIsLoading(true);
-      const data = await getVans();
-      setVans(data);
-      setIsLoading(false);
+      try {
+        const data = await getVans();
+        setVans(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     loadVans();
@@ -72,6 +78,10 @@ export default function Vans() {
 
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (error) {
+    return <h1>There was an error: {error.message}</h1>;
   }
 
   return (
