@@ -23,12 +23,13 @@ import HostVansDetailHeader from "./pages/Host/components/HostVansDetailHeader";
 import "./server";
 import Tekken from "./pages/Tekken";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import AuthRequired from "./pages/AuthRequired";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="tekken" element={<Tekken />} />
       <Route path="about" element={<About />} />
       <Route
         path="vans"
@@ -37,6 +38,10 @@ const router = createBrowserRouter(
         errorElement={<Error />}
       />
       <Route path="vans/:id" element={<VanDetail />} />
+      <Route path="login" element={<Login />} />
+      <Route element={<AuthRequired />}>
+        <Route path="tekken" element={<Tekken />} />
+      </Route>
 
       <Route path="host" element={<HostLayout />}>
         <Route index element={<Dashboard />} />
