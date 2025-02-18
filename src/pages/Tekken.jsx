@@ -67,6 +67,16 @@ export default function Tekken() {
     return `?${sp.toString()}`;
   }
 
+  function handleFilterChange(key, value) {
+    setSearchParams((prevParams) => {
+      if (value === null) prevParams.delete(key);
+      else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center">
       <h1 className="text-2xl font-black">
@@ -75,13 +85,20 @@ export default function Tekken() {
       </h1>
       <div className="flex gap-5">
         {filterButtons.map((button) => (
-          <Link
-            to={generateNewSearchParamString("style", button.path)}
+          <button
+            onClick={() => handleFilterChange("style", button.path)}
             key={button.name}
             className={`cursor-pointer rounded-md border p-2 shadow-[0_0_3px] ${button.name.toLowerCase() === "taekwondo" ? "text-red-500" : button.name.toLowerCase() === "karate" ? "text-blue-500" : ""}`}
           >
             {button.name}
-          </Link>
+          </button>
+          // <Link
+          //   to={generateNewSearchParamString("style", button.path)}
+          //   key={button.name}
+          //   className={`cursor-pointer rounded-md border p-2 shadow-[0_0_3px] ${button.name.toLowerCase() === "taekwondo" ? "text-red-500" : button.name.toLowerCase() === "karate" ? "text-blue-500" : ""}`}
+          // >
+          //   {button.name}
+          // </Link>
           // <button
           //   onClick={() => setSearchParams({ style: button.path })}
 
