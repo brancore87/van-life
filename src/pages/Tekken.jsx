@@ -28,10 +28,10 @@ const filterButtons = [
     path: "karate",
     name: "Karate",
   },
-  {
-    path: null,
-    name: "Clear",
-  },
+  // {
+  //   path: null,
+  //   name: "Clear",
+  // },
 ];
 
 export default function Tekken() {
@@ -108,12 +108,14 @@ export default function Tekken() {
           //   {button.name}
           // </button>
         ))}
-        {/* <button
-          className="cursor-pointer rounded-md border p-2 shadow-[0_0_3px]"
-          onClick={() => setSearchParams({})}
-        >
-          Clear
-        </button> */}
+        {styleFilter && (
+          <button
+            className="cursor-pointer rounded-md border p-2 shadow-[0_0_3px]"
+            onClick={() => setSearchParams({})}
+          >
+            Clear
+          </button>
+        )}
       </div>
       {tekkenElements}
     </main>

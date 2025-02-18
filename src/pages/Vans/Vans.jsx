@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, useResolvedPath, useSearchParams } from "react-router";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useResolvedPath,
+  useSearchParams,
+} from "react-router";
 import buttonClasses from "../../utils";
 import Loading from "../../components/Loading";
 import { motion } from "motion/react";
@@ -23,7 +29,6 @@ export default function Vans() {
   const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
-  console.log(typeFilter);
 
   useEffect(() => {
     fetch("/api/vans/")
@@ -37,7 +42,7 @@ export default function Vans() {
 
   const vansElement = displayedVans.map((van) => (
     <ul key={van.id} className="my-5">
-      <Link to={`/vans/${van.id}`}>
+      <Link to={van.id} state={{ search: `?${searchParams.toString()}` }}>
         <motion.img
           initial={{ opacity: 0, scale: 0.5 }} // Start small and hidden
           animate={{ opacity: 1, scale: 1 }} // Fade in and scale up
@@ -72,20 +77,20 @@ export default function Vans() {
             {vanType.map((van) => (
               <button
                 key={van.name}
-                className={`bg-filter rounded-filter cursor-pointer px-3 py-2 ${van.path === typeFilter ? "font-bold shadow-[0_0_3px]" : ""}`}
-                // to={`?type=${van.path}`} for <Link>
+                className={`rounded-filter cursor-pointer px-3 py-2 shadow-[0_0_3px] ${van.path === typeFilter ? buttonClasses(van.path) : ""}`}
                 onClick={() => setSearchParams({ type: van.path })}
               >
                 {van.name}
               </button>
             ))}
-            <button
-              className="rounded-filter cursor-pointer px-3 py-2 shadow-[0_0_2px] hover:shadow-[0_0_3px]"
-              // to={`?type=${van.path}`} for <Link>
-              onClick={() => setSearchParams({})}
-            >
-              Clear
-            </button>
+            {typeFilter && (
+              <button
+                className="rounded-filter cursor-pointer px-3 py-2 shadow-[0_0_2px] hover:shadow-[0_0_3px]"
+                onClick={() => setSearchParams({})}
+              >
+                Clear
+              </button>
+            )}
           </section>
           <section className="top-15 left-10 mx-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {vansElement}

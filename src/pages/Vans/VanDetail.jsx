@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
 import buttonClasses from "../../utils";
 import Loading from "../../components/Loading";
 import { motion } from "motion/react";
@@ -7,6 +7,10 @@ import { motion } from "motion/react";
 export default function VanDetail() {
   const [van, setVan] = useState(null);
   const params = useParams();
+  const location = useLocation();
+  console.log(location);
+
+  const search = location.state?.search || "";
 
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
@@ -18,10 +22,11 @@ export default function VanDetail() {
     <main className="flex min-h-screen flex-col items-center px-3">
       {van ? (
         <>
-          <Link to=".." relative="path" className="ml-10 w-full">
-            ⬅ Back to all vans
-          </Link>
-
+          <div className="flex w-full">
+            <Link to={`..${search}`} relative="path" className="px-8">
+              ⬅ Back to all vans
+            </Link>
+          </div>
           <motion.img
             initial={{ opacity: 0, scale: 0.5 }} // Start small and hidden
             animate={{ opacity: 1, scale: 1 }} // Fade in and scale up

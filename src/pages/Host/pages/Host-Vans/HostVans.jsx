@@ -28,7 +28,7 @@ export default function HostVans() {
               className="my-3 h-[105px] w-full rounded-[5px] bg-white px-3"
             >
               <NavLink
-                to={`/host/vans/${vans.id}`}
+                to={vans.id}
                 className="flex h-full w-full items-center px-5 py-10"
               >
                 <motion.img
