@@ -28,10 +28,6 @@ const filterButtons = [
     path: "karate",
     name: "Karate",
   },
-  {
-    path: "",
-    name: "Clear",
-  },
 ];
 
 export default function Tekken() {
@@ -65,14 +61,21 @@ export default function Tekken() {
       </h1>
       <div className="flex gap-5">
         {filterButtons.map((button) => (
-          <Link
-            to={`?style=${button.path}`}
+          <button
+            // to={`?style=${button.path}`} for <Link>
+            onClick={() => setSearchParams({ style: button.path })}
             key={button.name}
-            className={`rounded-md border p-2 shadow-[0_0_3px] ${button.name.toLowerCase() === "taekwondo" ? "text-red-500" : button.name.toLowerCase() === "karate" ? "text-blue-500" : ""}`}
+            className={`cursor-pointer rounded-md border p-2 shadow-[0_0_3px] ${button.name.toLowerCase() === "taekwondo" ? "text-red-500" : button.name.toLowerCase() === "karate" ? "text-blue-500" : ""}`}
           >
             {button.name}
-          </Link>
+          </button>
         ))}
+        <button
+          className="cursor-pointer rounded-md border p-2 shadow-[0_0_3px]"
+          onClick={() => setSearchParams({})}
+        >
+          Clear
+        </button>
       </div>
       {tekkenElements}
     </main>

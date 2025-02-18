@@ -17,16 +17,12 @@ const vanType = [
     name: "Luxury",
     path: "luxury",
   },
-  {
-    name: "Clear",
-    path: "",
-  },
 ];
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const typeFilter = searchParams.get("type".toLowerCase());
+  const typeFilter = searchParams.get("type");
   console.log(typeFilter);
 
   useEffect(() => {
@@ -74,14 +70,22 @@ export default function Vans() {
           </h1>
           <section className="mt-5 mb-10 flex gap-3">
             {vanType.map((van) => (
-              <Link
+              <button
                 key={van.name}
-                className={`bg-filter rounded-filter px-3 py-2 ${van.path === typeFilter ? "font-bold shadow-[0_0_3px]" : ""}`}
-                to={`?type=${van.path}`}
+                className={`bg-filter rounded-filter cursor-pointer px-3 py-2 ${van.path === typeFilter ? "font-bold shadow-[0_0_3px]" : ""}`}
+                // to={`?type=${van.path}`} for <Link>
+                onClick={() => setSearchParams({ type: van.path })}
               >
                 {van.name}
-              </Link>
+              </button>
             ))}
+            <button
+              className="rounded-filter cursor-pointer px-3 py-2 shadow-[0_0_2px] hover:shadow-[0_0_3px]"
+              // to={`?type=${van.path}`} for <Link>
+              onClick={() => setSearchParams({})}
+            >
+              Clear
+            </button>
           </section>
           <section className="top-15 left-10 mx-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {vansElement}
