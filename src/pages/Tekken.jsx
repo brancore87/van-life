@@ -28,6 +28,10 @@ const filterButtons = [
     path: "karate",
     name: "Karate",
   },
+  {
+    path: null,
+    name: "Clear",
+  },
 ];
 
 export default function Tekken() {
@@ -53,6 +57,16 @@ export default function Tekken() {
     </div>
   ));
 
+  function generateNewSearchParamString(key, value) {
+    const sp = new URLSearchParams(searchParams);
+    if (value === null) {
+      sp.delete(key);
+    } else {
+      sp.set(key, value);
+    }
+    return `?${sp.toString()}`;
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center">
       <h1 className="text-2xl font-black">
@@ -61,21 +75,28 @@ export default function Tekken() {
       </h1>
       <div className="flex gap-5">
         {filterButtons.map((button) => (
-          <button
-            // to={`?style=${button.path}`} for <Link>
-            onClick={() => setSearchParams({ style: button.path })}
+          <Link
+            to={generateNewSearchParamString("style", button.path)}
             key={button.name}
             className={`cursor-pointer rounded-md border p-2 shadow-[0_0_3px] ${button.name.toLowerCase() === "taekwondo" ? "text-red-500" : button.name.toLowerCase() === "karate" ? "text-blue-500" : ""}`}
           >
             {button.name}
-          </button>
+          </Link>
+          // <button
+          //   onClick={() => setSearchParams({ style: button.path })}
+
+          //   key={button.name}
+          //   className={`cursor-pointer rounded-md border p-2 shadow-[0_0_3px] ${button.name.toLowerCase() === "taekwondo" ? "text-red-500" : button.name.toLowerCase() === "karate" ? "text-blue-500" : ""}`}
+          // >
+          //   {button.name}
+          // </button>
         ))}
-        <button
+        {/* <button
           className="cursor-pointer rounded-md border p-2 shadow-[0_0_3px]"
           onClick={() => setSearchParams({})}
         >
           Clear
-        </button>
+        </button> */}
       </div>
       {tekkenElements}
     </main>
