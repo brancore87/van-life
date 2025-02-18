@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  BrowserRouter,
-  Routes,
   Route,
   RouterProvider,
   createRoutesFromElements,
@@ -9,7 +7,7 @@ import {
 } from "react-router";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
-import Vans from "./pages/Vans/Vans";
+import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import VanDetail from "./pages/Vans/VanDetail";
 import About from "./pages/About";
 import HostLayout from "./pages/Host/components/HostLayout";
@@ -31,7 +29,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="tekken" element={<Tekken />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} />
+      <Route path="vans" element={<Vans />} loader={vansLoader} />
       <Route path="vans/:id" element={<VanDetail />} />
 
       <Route path="host" element={<HostLayout />}>

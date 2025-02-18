@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useLoaderData, useLocation, useParams } from "react-router";
 import buttonClasses from "../../utils";
 import Loading from "../../components/Loading";
 import { motion } from "motion/react";
@@ -8,7 +8,6 @@ export default function VanDetail() {
   const [van, setVan] = useState(null);
   const params = useParams();
   const location = useLocation();
-  console.log(location);
 
   const search = location.state?.search || "";
 

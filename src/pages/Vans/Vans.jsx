@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router";
+import { Link, useLoaderData, useSearchParams } from "react-router";
 import buttonClasses from "../../utils";
 import Loading from "../../components/Loading";
 import { motion } from "motion/react";
@@ -20,28 +20,14 @@ const vanType = [
   },
 ];
 
+export function loader() {
+  return getVans();
+}
+
 export default function Vans() {
-  const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function loadVans() {
-      setIsLoading(true);
-      try {
-        const data = await getVans();
-        setVans(data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    loadVans();
-  }, []);
+  const vans = useLoaderData();
 
   const displayedVans = typeFilter
     ? vans.filter((van) => van.type === typeFilter)
@@ -75,14 +61,6 @@ export default function Vans() {
       </Link>
     </ul>
   ));
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (error) {
-    return <h1>There was an error: {error.message}</h1>;
-  }
 
   return (
     <>
