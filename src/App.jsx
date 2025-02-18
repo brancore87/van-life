@@ -15,6 +15,7 @@ import HostVansPricing from "./pages/Host/pages/Host-Vans/HostVanPricing";
 import HostVansPhotos from "./pages/Host/pages/Host-Vans/HostVanPhotos";
 import HostVansDetailHeader from "./pages/Host/components/HostVansDetailHeader";
 import "./server";
+import Tekken from "./pages/Tekken";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="tekken" element={<Tekken />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />

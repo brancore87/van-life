@@ -4,6 +4,10 @@ import { NavLink } from "react-router";
 export default function Header() {
   const navLinks = [
     {
+      path: "/tekken",
+      name: "Tekken",
+    },
+    {
       path: "/host",
       name: "Host",
     },

@@ -1,11 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, NavLink, useResolvedPath, useSearchParams } from "react-router";
 import buttonClasses from "../../utils";
 import Loading from "../../components/Loading";
 import { motion } from "motion/react";
 
+const vanType = [
+  {
+    name: "Simple",
+    path: "simple",
+  },
+  {
+    name: "Rugged",
+    path: "rugged",
+  },
+  {
+    name: "Luxury",
+    path: "luxury",
+  },
+  {
+    name: "Clear",
+    path: "",
+  },
+];
+
 export default function Vans() {
   const [vans, setVans] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const typeFilter = searchParams.get("type".toLowerCase());
+  console.log(typeFilter);
 
   useEffect(() => {
     fetch("/api/vans/")
@@ -13,7 +35,11 @@ export default function Vans() {
       .then((data) => setVans(data.vans));
   }, []);
 
-  const vansElement = vans.map((van) => (
+  const displayedVans = typeFilter
+    ? vans.filter((van) => van.type === typeFilter)
+    : vans;
+
+  const vansElement = displayedVans.map((van) => (
     <ul key={van.id} className="my-5">
       <Link to={`/vans/${van.id}`}>
         <motion.img
@@ -46,16 +72,16 @@ export default function Vans() {
           <h1 className="w-full px-10 text-[32px] font-bold">
             Explore our van options
           </h1>
-          <section className="mt-5 mb-10 flex gap-1">
-            <button className="bg-filter rounded-filter w-filter-width h-filter-height">
-              Simple
-            </button>
-            <button className="bg-filter rounded-filter w-filter-width h-filter-height">
-              Luxury
-            </button>
-            <button className="bg-filter rounded-filter w-filter-width h-filter-height">
-              Rugged
-            </button>
+          <section className="mt-5 mb-10 flex gap-3">
+            {vanType.map((van) => (
+              <Link
+                key={van.name}
+                className={`bg-filter rounded-filter px-3 py-2 ${van.path === typeFilter ? "font-bold shadow-[0_0_3px]" : ""}`}
+                to={`?type=${van.path}`}
+              >
+                {van.name}
+              </Link>
+            ))}
           </section>
           <section className="top-15 left-10 mx-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {vansElement}
